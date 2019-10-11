@@ -88,7 +88,7 @@ class Sensei(MockableTestResult):
         self.stream.writeln("")
         self.stream.writeln(self.report_progress())
         if self.failures:
-          self.stream.writeln(self.report_remaining())
+            self.stream.writeln(self.report_remaining())
         self.stream.writeln("")
         self.stream.writeln(self.say_something_zenlike())
 
@@ -99,7 +99,7 @@ class Sensei(MockableTestResult):
         self.stream.writeln("\n{0}That was the last one, well done!" \
             .format(Fore.MAGENTA))
         self.stream.writeln(
-            "\nIf you want more, take a look at about_extra_credit_task.py")
+            "\nIf you want more, take a look at about_extra_credit.py")
 
     def errorReport(self):
         problem = self.firstFailure()
@@ -167,10 +167,12 @@ class Sensei(MockableTestResult):
         return stack_text
 
     def report_progress(self):
-        return "You have completed {0} koans and " \
-            "{1} lessons.".format(
+        return "You have completed {0} ({2} %) koans and " \
+            "{1} (out of {3}) lessons.".format(
                 self.pass_count,
-                self.lesson_pass_count)
+                self.lesson_pass_count,
+                self.pass_count*100/self.total_koans(),
+                self.total_lessons())
 
     def report_remaining(self):
         koans_remaining = self.total_koans() - self.pass_count

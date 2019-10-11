@@ -35,13 +35,13 @@ class AboutNone(Koan):
         #
         # Need a recap on how to evaluate __class__ attributes?
         #
-        #     http://bit.ly/__class__
+        #     https://github.com/gregmalcolm/python_koans/wiki/Class-Attribute
 
         self.assertEqual(__, ex2.__class__)
 
         # What message was attached to the exception?
         # (HINT: replace __ with part of the error message.)
-        self.assertRegexpMatches(ex2.args[0], __)
+        self.assertRegex(ex2.args[0], __)
 
     def test_none_is_distinct(self):
         """
